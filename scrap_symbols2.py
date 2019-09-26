@@ -34,7 +34,7 @@ exchanges = ['nasdaq', 'nyse', 'amex']
 for exchanger_name in exchanges:
     exchanger = Exchange(exchanger_name)
     data_from_exchanger = exchanger.get_data()
-    list_result.extend(data_from_exchanger)
+    list_result.extend([data for data in data_from_exchanger if data not in list_result])
 
 for val in list_result:
     writer.writerow(val)
